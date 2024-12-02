@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="heap.js"></script>
+    <script src="huffman.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+    <title>Send</title>
+</head>
+
+<style>
+    /* Basic Reset */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        /* background: linear-gradient(to right, #FFB6C1, #FF69B4); */
+        color: #fff;
+    }
+
+    /* Full-height container */
+    #container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 40px;
+        width: 100%;
+        height: 70%;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Styling for text boxes */
+    .text_box {
+        width: 48%;
+        height: 100%;
+        font-family: cursive;
+        background-color: #ffffff;
+        border-radius: 15px;
+        border: 1px solid #ddd;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        overflow-y: auto;
+        background: #f7f7f7;
+        color: #333;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+    }
+
+    .text_box:hover {
+        font-family: cursive;
+        text-decoration: wavy;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        background-color: #f0f8ff;
+    }
+
+    /* Centered Titles */
+    #treearea, #temptext {
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Keyframe animation for fade-in */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Button Styling */
+    .center_buttons {
+        margin-top: 20px;
+        padding: 15px 35px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: none;
+        outline: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* File input styling */
+    input[type="file"] {
+        margin: 20px 0;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        font-size: 1rem;
+        background-color: #fff;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+        border-color: #007bff;
+        background-color: #f0f8ff;
+    }
+
+    input[type="file"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+        #container {
+            flex-direction: column;
+            padding: 15px;
+        }
+
+        .text_box {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .center_buttons {
+            width: 100%;
+            padding: 12px 40px;
+        }
+    }
+</style>
+
+<body>
+    <div id="container">
+        <!-- Text box for tree structure -->
+        <div class="text_box">
+            <span id="treearea">Tree Structure Will Be Displayed Here !!</span>
+        </div>
+        <!-- Text box for operation info -->
+        <div class="text_box">
+            <span id="temptext">Operation info will be shown here !!</span>
+        </div>
+    </div>
+
+    <!-- Form for file upload -->
+    <div class="text-center">
+        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
+            <input type="file" id="uploadedFile" />
+        </form>
+
+        <!-- Encode button -->
+        <button type="button" class="btn btn-success center_buttons" id="encode">
+            Encode
+        </button>
+    </div>
+</body>
+
+</html>
